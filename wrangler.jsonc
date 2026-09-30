@@ -1,0 +1,9 @@
+{
+  "name": "ketankhanna-com",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "." },
+  "routes": [
+    { "pattern": "ketankhanna.com", "custom_domain": true },
+    { "pattern": "www.ketankhanna.com", "custom_domain": true }
+  ]
+}
