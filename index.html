@@ -60,7 +60,17 @@ footer { padding:36px 0 60px; color:var(--muted); font-size:14px; }
   .jobs .job { grid-template-columns:1fr; gap:2px; }
   .cards, .skills { grid-template-columns:1fr; }
 }
-</style>
+/* keep dividers and glow inside the content column on wide screens */
+header { border-bottom:none; background:none; }
+header .wrap { position:relative; border-bottom:1px solid var(--line); padding-bottom:40px; }
+header .wrap::before { content:""; position:absolute; inset:-72px -120px 0 -120px; background:radial-gradient(600px 260px at 20% 0%, rgba(124,92,255,.18), transparent 70%); z-index:-1; pointer-events:none; }
+header { padding-bottom:0; }
+section { border-bottom:none; padding:0; }
+section .wrap { border-bottom:1px solid var(--line); padding-top:44px; padding-bottom:44px; }
+/* scale up on large and 4K displays so it doesn't look tiny and stretched */
+@media (min-width:1800px) { body { zoom:1.2; } }
+@media (min-width:2400px) { body { zoom:1.5; } }
+@media (min-width:3200px) { body { zoom:1.9; } }</style>
 </head>
 <body>
 
@@ -96,7 +106,7 @@ footer { padding:36px 0 60px; color:var(--muted); font-size:14px; }
  <div class="wrap">
   <h2>What I bring</h2>
   <div class="edge">
-   <div class="card"><h3>Marketing Automation</h3><p>Hands-on Adobe Campaign expert. Precise segments and dynamic HTML with suppression rules that keep deliverability high. A/B tests that actually teach you something.</p></div>
+   <div class="card"><h3>Marketing Automation</h3><p>Hands-on Adobe Campaign expert. Precise segments and dynamic HTML with suppression rules that keep deliverability high. A/B tests that turn into clear decisions.</p></div>
    <div class="card"><h3>Execution you can trust</h3><p>Right the first time. Tight QA. Clean audiences. Compliance handled in a regulated industry.</p></div>
    <div class="card"><h3>Ad tech fluency</h3><p>Google's full ad stack plus DMPs and programmatic buying. Insertion order to final report.</p></div>
    <div class="card"><h3>Data beyond the dashboard</h3><p>Did the test actually win? Which audiences are burning out? What drives ROI? I answer those with Python and stats.</p></div>
@@ -118,7 +128,7 @@ footer { padding:36px 0 60px; color:var(--muted); font-size:14px; }
  <div class="wrap">
   <h2>Projects</h2>
   <div class="cards">
-   <div class="card"><h3><a href="https://github.com/ketankhanna/email-campaign-analytics" target="_blank" rel="noopener">Email Campaign Analytics</a></h3><p>Scorecards and trend lines with English vs French splits. A/B tests backed by real significance math rather than vibes.</p><div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">A/B testing</span></div></div>
+   <div class="card"><h3><a href="https://github.com/ketankhanna/email-campaign-analytics" target="_blank" rel="noopener">Email Campaign Analytics</a></h3><p>Scorecards and trend lines with English vs French splits. A/B tests evaluated with proper significance testing.</p><div class="tags"><span class="tag">Python</span><span class="tag">pandas</span><span class="tag">A/B testing</span></div></div>
    <div class="card"><h3><a href="https://github.com/ketankhanna/snake-dqn-agent" target="_blank" rel="noopener">Snake DQN Agent</a></h3><p>A deep Q-learning agent that teaches itself to play Snake.</p><div class="tags"><span class="tag">Reinforcement learning</span><span class="tag">TensorFlow</span></div></div>
    <div class="card"><h3><a href="https://github.com/ketankhanna/toronto-collision-severity" target="_blank" rel="noopener">Toronto Collision Severity</a></h3><p>Nine models head to head on Toronto Police open data. Tuned the best ones. Team project.</p><div class="tags"><span class="tag">scikit-learn</span><span class="tag">Open data</span></div></div>
    <div class="card"><h3>EXIOS</h3><p>A sci-fi strategy game with a dark story. I design and direct it through my studio Cinderhawk Games. Built in Godot with AI-assisted development. Steam Early Access planned.</p><div class="tags"><span class="tag">Game design</span><span class="tag">Godot</span><span class="tag">Direction</span></div></div>
@@ -155,7 +165,7 @@ footer { padding:36px 0 60px; color:var(--muted); font-size:14px; }
 
 <script>
 (function(){
-  var items=["deploying campaigns","A/B testing everything","training models","building EXIOS","probably debugging an email template"];
+  var items=["deploying campaigns","analyzing campaign data","building EXIOS"];
   var el=document.getElementById('now'), i=0;
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   setInterval(function(){ i=(i+1)%items.length; el.textContent=items[i]; }, 2600);
